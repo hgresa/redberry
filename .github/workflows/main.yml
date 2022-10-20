@@ -17,4 +17,5 @@ jobs:
     runs-on: redberry-stage
     steps:
     - uses: actions/checkout@v1
-    - run: touch test.txt && mv test.txt $STAGE_TEMPORARY_DIR
+    - run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist && ls | grep vendor
+    - run: cp -r * $STAGE_TEMPORARY_DIR
