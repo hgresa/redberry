@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - main
+
+name: CI
+
+env:
+  STAGE_TEMPORARY_DIR: /home/ubuntu/temporary_dir
+  STAGE_SSH_DIR: /home/ubuntu/.ssh/keys
+  PROD_HOME: /home/ubuntu
+  PROD_PROJECT_DIR: /var/www/redberry
+  FILENAME: app.zip
+
+jobs:
+  build:
+    runs-on: redberry-stage
+    steps:
+    - uses: actions/checkout@v1
+    - run: touch test.txt && mv test.txt $STAGE_TEMPORARY_DIR
